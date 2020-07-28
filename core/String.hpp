@@ -126,7 +126,7 @@ public:
 
 private:
 
-    const char* word;
+    char* word;
     unsigned int char_count;
 
 

@@ -23,11 +23,17 @@ String::String()
 }
 
 String::String(const char* chars)
-    :word{chars}
 {
+    
     unsigned int size = 0;
     while (chars[size] !='\0') size++;
     String::char_count = size;
+    char* the_char = new char[size];
+    for (unsigned int i = 0; i< size;++i)
+    {  
+        the_char[i] = chars[i];
+    }
+    this->word = the_char;
 }
 
 String::String(const String& s)
