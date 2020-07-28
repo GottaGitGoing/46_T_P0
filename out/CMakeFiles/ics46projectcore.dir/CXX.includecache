@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ics46/projects/proj0/core/String.cpp
+String.hpp
+/home/ics46/projects/proj0/core/String.hpp
+
+/home/ics46/projects/proj0/core/String.hpp
+
