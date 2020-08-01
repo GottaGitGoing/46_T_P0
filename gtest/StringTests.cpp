@@ -15,76 +15,76 @@
 #include "String.hpp"
 
 
-TEST(StringTests, emptyWhenDefaultConstructed)
-{
-    String s;
-    EXPECT_TRUE(s.isEmpty());
-}
-
-
-TEST(StringTests, lengthIsZeroWhenDefaultConstructed)
-{
-    String s;
-    EXPECT_EQ(0, s.length());
-}
-
-
-TEST(StringTests, toCharsIsEmptyCStringWhenDefaultConstructed)
-{
-    String s;
-    EXPECT_STREQ("", s.toChars());
-}
-
-
-TEST(StringTests, canConstructFromCString)
-{
-    const char* chars = "Boo is snoring";
-
-    String s{chars};
-
-    EXPECT_EQ(14, s.length());
-    EXPECT_STREQ(chars, s.toChars());
-}
-
-
-TEST(StringTests, canCopyConstructFromAnotherString)
-{
-    const char* chars = "Boo wants to know what's over there";
-
-    String s{chars};
-    String t{s};
-
-    EXPECT_EQ(35, t.length());
-    EXPECT_STREQ(chars, t.toChars());
-}
-
-
-TEST(StringTests, canCopyAssignFromAnotherString)
-{
-    const char* chars = "Boo is perfect";
-
-    String s{chars};
-    String t{"Hello"};
-
-    t = s;
-
-    EXPECT_EQ(14, t.length());
-    EXPECT_STREQ(chars, t.toChars());
-}
-
-
-// TEST(StringTests, canAppendChars)
+// TEST(StringTests, emptyWhenDefaultConstructed)
 // {
-//     const char* chars = "Boo is";
-//     const char* moreChars = " the very best";
+//     String s;
+//     EXPECT_TRUE(s.isEmpty());
+// }
+
+
+// TEST(StringTests, lengthIsZeroWhenDefaultConstructed)
+// {
+//     String s;
+//     EXPECT_EQ(0, s.length());
+// }
+
+
+// TEST(StringTests, toCharsIsEmptyCStringWhenDefaultConstructed)
+// {
+//     String s;
+//     EXPECT_STREQ("", s.toChars());
+// }
+
+
+// TEST(StringTests, canConstructFromCString)
+// {
+//     const char* chars = "Boo is snoring";
 
 //     String s{chars};
-//     String more{moreChars};
-//     s.append(more);
 
-//     EXPECT_EQ(20, s.length());
-//     EXPECT_STREQ("Boo is the very best", s.toChars());
+//     EXPECT_EQ(14, s.length());
+//     EXPECT_STREQ(chars, s.toChars());
 // }
+
+
+// TEST(StringTests, canCopyConstructFromAnotherString)
+// {
+//     const char* chars = "Boo wants to know what's over there";
+
+//     String s{chars};
+//     String t{s};
+
+//     EXPECT_EQ(35, t.length());
+//     EXPECT_STREQ(chars, t.toChars());
+// }
+
+
+// TEST(StringTests, canCopyAssignFromAnotherString)
+// {
+//     const char* chars = "Boo is perfect";
+
+//     String s{chars};
+//     String t{"Hello"};
+
+//     t = s;
+
+//     EXPECT_EQ(14, t.length());
+//     EXPECT_STREQ(chars, t.toChars());
+// }
+
+
+TEST(StringTests, canAppendChars)
+{
+    const char* chars = "Boo is";
+    const char* moreChars = " the very best";
+
+    String s{chars};
+    String more{moreChars};
+    s.append(more);
+
+    EXPECT_EQ(20, s.length());
+    EXPECT_STREQ("Boo is the very best", s.toChars());
+}
 
 
 // TEST(StringTests, canObtainIndividualCharactersFromConstString)

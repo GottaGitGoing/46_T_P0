@@ -58,11 +58,27 @@ String::~String() noexcept
 }
 
 
-// void String::append(const String& s)
-// {
-    
-//     this->word += s;
-// }
+void String::append(const String& s)
+{   
+    // char* s_array = new char[s.char_count];
+    // for (unsigned int i=0; i< s.char_count;++i)
+    // {
+    //     s_array[i] = s.word[i];
+    // }
+
+    int new_size = this->char_count+s.char_count;
+    char* new_array = new char[new_size]; // 5 + 6 old + append
+    for (unsigned int i =0; i<s.char_count;++i)
+    {
+        new_array[i] = s.word[i];
+    }
+    for (unsigned int i =this->char_count-1; i<new_size-this->char_count;++i)
+    {
+        new_array[i] = s.word[i];
+    }
+    this->word = new_array;
+
+}
 
 bool String::isEmpty() const noexcept
 {
