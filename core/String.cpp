@@ -11,6 +11,7 @@
 // skills (pointers, memory management, and so on).
 
 #include "String.hpp"
+#include "OutOfBoundsException.hpp"
 
 namespace
 {
@@ -68,17 +69,73 @@ void String::append(const String& s)
 
     int new_size = this->char_count+s.char_count;
     char* new_array = new char[new_size]; // 5 + 6 old + append
-    for (unsigned int i =0; i<s.char_count;++i)
+    for (unsigned int i = 0; i<this->char_count;++i)
     {
-        new_array[i] = s.word[i];
+        new_array[i] = this->word[i];
     }
-    for (unsigned int i =this->char_count-1; i<new_size-this->char_count;++i)
+    for (unsigned int i = 0; i<s.char_count; ++i)
     {
-        new_array[i] = s.word[i];
+        new_array[i+this->char_count] = s.word[i];
     }
+
     this->word = new_array;
+    this->char_count = new_size;
 
 }
+
+char String::at(unsigned int index) const
+{
+
+    // try
+    // {
+    //     if (index>=0 && index <this->char_count)
+    //     {
+    //         return this->word[index];
+    //     }
+    //     else
+    //     {
+    //         throw Out
+    //     }
+        
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    // }
+    
+    if (index>=0 && index <this->char_count)
+    {
+        return this->word[index];
+    }
+    else
+    {
+        throw OutOfBoundsException();
+    }
+    
+}
+
+
+char& String::at(unsigned int index)
+{   
+    if (index>=0 && index <this->char_count)
+    {
+        return this->word[index];
+    }
+    else
+    {
+        throw OutOfBoundsException();
+    }
+    
+}
+
+
+void String::clear()
+{
+    this->char_count = 0;
+
+    this->word = new char[0];
+}
+
 
 bool String::isEmpty() const noexcept
 {

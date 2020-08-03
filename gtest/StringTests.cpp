@@ -73,18 +73,18 @@
 // }
 
 
-TEST(StringTests, canAppendChars)
-{
-    const char* chars = "Boo is";
-    const char* moreChars = " the very best";
+// TEST(StringTests, canAppendChars)
+// {
+//     const char* chars = "Boo is";
+//     const char* moreChars = " the very best";
 
-    String s{chars};
-    String more{moreChars};
-    s.append(more);
+//     String s{chars};
+//     String more{moreChars};
+//     s.append(more);
 
-    EXPECT_EQ(20, s.length());
-    EXPECT_STREQ("Boo is the very best", s.toChars());
-}
+//     EXPECT_EQ(20, s.length());
+//     EXPECT_STREQ("Boo is the very best", s.toChars());
+// }
 
 
 // TEST(StringTests, canObtainIndividualCharactersFromConstString)
@@ -136,14 +136,14 @@ TEST(StringTests, canAppendChars)
 // }
 
 
-// TEST(StringTests, clearRemovesAllCharacters)
-// {
-//     String s{"Boo is asleep"};
-//     s.clear();
+TEST(StringTests, clearRemovesAllCharacters)
+{
+    String s{"Boo is asleep"};
+    s.clear();
 
-//     EXPECT_EQ(0, s.length());
-//     EXPECT_STREQ("", s.toChars());
-// }
+    EXPECT_EQ(0, s.length());
+    EXPECT_STREQ("", s.toChars());
+}
 
 
 // TEST(StringTests, compareToReturnsZeroWhenEquivalent)
